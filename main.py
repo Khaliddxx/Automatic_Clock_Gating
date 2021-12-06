@@ -66,7 +66,7 @@ if __name__ == "__main__":
 	definition.items = tuple(newRTL)
 	codegen = ASTCodeGenerator()
 	rslt = codegen.visit(ast)
-	f = open("test2Updated.v", "w+")
+	f = open("test2_out.v", "w+")
 	f.write(rslt)
 	f.close()
 
