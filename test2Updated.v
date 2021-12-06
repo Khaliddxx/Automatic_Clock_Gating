@@ -22,26 +22,6 @@ module test2
   output q1;
   output q2;
 
-  sky130_fd_sc_hd__mux2_1
-  _2_
-  (
-    .A0(q1),
-    .A1(d1),
-    .S(ld1),
-    .X(_0_)
-  );
-
-
-  sky130_fd_sc_hd__mux2_1
-  _3_
-  (
-    .A0(q2),
-    .A1(d2),
-    .S(ld2),
-    .X(_1_)
-  );
-
-
   sky130_fd_sc_hd__dfxtp_1
   _4_
   (

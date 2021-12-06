@@ -10,6 +10,7 @@ module test2(d1, d2, clk, ld1, ld2, q1, q2);
   input ld2;
   output q1;
   output q2;
+
   sky130_fd_sc_hd__mux2_1 _2_ (
     .A0(q1),
     .A1(d1),

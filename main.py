@@ -18,11 +18,11 @@ if __name__ == "__main__":
 	newRTL = []
 	enables = []
 	en = []
-	outputList = []
+	List = []
 	clkGateArgs = []
     
 
-	#en = definition.items.statement.cond
+
 	for itemDeclaration in definition.items:
 		item_type = type(itemDeclaration).__name__
 		if item_type == "InstanceList":
@@ -39,6 +39,7 @@ if __name__ == "__main__":
 				if i.portname == "CLK":
 					i.argname = vast.Identifier('_clockgate_output_')
 
+
 	enables = list(set(en))
 	#print(enables)
 	for j in range(len(enables)):
@@ -47,9 +48,16 @@ if __name__ == "__main__":
     
 	clockgate_output_gclk = vast.Wire('_clockgate_output_')
 	newRTL.append(clockgate_output_gclk)
-
+    
 	for itemDeclaration in definition.items:
-		newRTL.append(itemDeclaration)
+		item_type = type(itemDeclaration).__name__
+		if item_type != "InstanceList":
+			newRTL.append(itemDeclaration)
+		else:
+			mux = itemDeclaration.instances[0]
+			if mux.module != "sky130_fd_sc_hd__mux2_1" and mux.module != "sky130_fd_sc_hd__a21oi_1":
+				newRTL.append(itemDeclaration)
+
 
 	for j in range(len(enables)):       
 		clkgate_cell = vast.Instance("sky130_fd_sc_hd__dlclkp_1", "__clockgate_cell__", tuple(clkGateArgs[j]), tuple())
@@ -58,7 +66,7 @@ if __name__ == "__main__":
 	definition.items = tuple(newRTL)
 	codegen = ASTCodeGenerator()
 	rslt = codegen.visit(ast)
-	f = open("testUpdated.v", "w+")
+	f = open("test2Updated.v", "w+")
 	f.write(rslt)
 	f.close()
 
