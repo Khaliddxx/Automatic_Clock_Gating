@@ -6,7 +6,9 @@ import sys
 if __name__ == "__main__":
 	rtl = sys.argv[1]
 	# abstract syntax tree
+
 	ast,_ = parse([rtl])
+
 	# Pyverilog has [description] tree, get root
 	description = ast.description
 	
@@ -16,6 +18,7 @@ if __name__ == "__main__":
 	
 	# Instantiating clock gate components
 	newRTL = []
+
 	enables = []
 	en = []
 	List = []
@@ -69,7 +72,6 @@ if __name__ == "__main__":
 	f = open("test1_out.v", "w+")
 	f.write(rslt)
 	f.close()
-
 
 
 
