@@ -27,13 +27,55 @@ if __name__ == "__main__":
 		item_type = type(itemDeclaration).__name__
 		if item_type == "InstanceList":
 			mux = itemDeclaration.instances[0]
-			if mux.module == "sky130_fd_sc_hd__a21oi_1":
+			if ("a21oi" or "a211oi" or "a2111oi") in mux.module:
 				for i in mux.portlist:
 					if i.portname == "A1":
 						en.append(i.argname)
-			if mux.module == "sky130_fd_sc_hd__mux2_1":
+			if ("a22oi" or "a221oi") in mux.module:
+				for i in mux.portlist:
+					if i.portname == "A1":
+						en.append(i.argname)
+					if i.portname == "B1":
+						en.append(i.argname)
+			if ("a222oi") in mux.module:
+				for i in mux.portlist:
+					if i.portname == "A1":
+						en.append(i.argname)
+					if i.portname == "B1":
+						en.append(i.argname)
+					if i.portname == "C1":
+						en.append(i.argname)
+			if "a31oi" in mux.module:
+				for i in mux.portlist:
+					if i.portname == "A1":
+						en.append(i.argname)
+					if i.portname == "A2":
+						en.append(i.argname)
+			if "a32oi" in mux.module:
+				for i in mux.portlist:
+					if i.portname == "A1":
+						en.append(i.argname)
+					if i.portname == "A3":
+						en.append(i.argname)
+					if i.portname == "B1":
+						en.append(i.argname)
+			if "a41oi" in mux.module:
+				for i in mux.portlist:
+					if i.portname == "A1":
+						en.append(i.argname)
+					if i.portname == "A3":
+						en.append(i.argname)
+					if i.portname == "A4":
+						en.append(i.argname)
+			if "mux2" in mux.module:
 				for i in mux.portlist:
 					if i.portname == "S":
+						en.append(i.argname)
+			if "mux4" in mux.module:
+				for i in mux.portlist:
+					if i.portname == "S0":
+						en.append(i.argname)
+					if i.portname == "S1":
 						en.append(i.argname)
 			for i in mux.portlist:
 				if i.portname == "CLK":
@@ -41,7 +83,7 @@ if __name__ == "__main__":
 
 
 	enables = list(set(en))
-	#print(enables)
+#	print(enables)
 	for j in range(len(enables)):
 		clkGateArgs.append([vast.PortArg("GCLK", vast.Identifier("_clockgate_output_")), vast.PortArg("GATE", vast.Identifier(str(en[j]))), vast.PortArg("CLK", vast.Identifier("CLK"))])
 	
@@ -55,7 +97,7 @@ if __name__ == "__main__":
 			newRTL.append(itemDeclaration)
 		else:
 			mux = itemDeclaration.instances[0]
-			if mux.module != "sky130_fd_sc_hd__mux2_1" and mux.module != "sky130_fd_sc_hd__a21oi_1":
+			if ("mux" not in mux.module) and ("a21" not in mux.module):
 				newRTL.append(itemDeclaration)
 
 
