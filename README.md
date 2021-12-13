@@ -36,5 +36,5 @@ and accordingly replaces them with clock gating cells depending on number of ena
 Code compatible only with skywater technology
 
 #### Tests
-![alt text](https://github.com/Khaliddxx/Automatic_Clock_Gating/blob/main/Test1.jpg?raw=true)
+![alt text](https://github.com/Khaliddxx/Automatic_Clock_Gating/blob/main/Test1.png?raw=true)
 
