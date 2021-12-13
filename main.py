@@ -100,9 +100,15 @@ if __name__ == "__main__":
 			if ("mux" not in mux.module) and ("a21" not in mux.module):
 				newRTL.append(itemDeclaration)
 
+	list = []
+	string = "" 
+	for j in range(len(enables)):
+		string = "__clockgate_cell"+str(j+1)+"__"
+		list.append(string);
 
+	#print(list)
 	for j in range(len(enables)):       
-		clkgate_cell = vast.Instance("sky130_fd_sc_hd__dlclkp_1", "__clockgate_cell__", tuple(clkGateArgs[j]), tuple())
+		clkgate_cell = vast.Instance("sky130_fd_sc_hd__dlclkp_1", list[j], tuple(clkGateArgs[j]), tuple())
 		newRTL.append(vast.InstanceList("sky130_fd_sc_hd__dlclkp_1", tuple(), tuple([clkgate_cell])))
     
 	definition.items = tuple(newRTL)
