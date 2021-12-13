@@ -15,12 +15,12 @@ Rawan Sameh     900192388
 1. Clone the repository.
 2. Make sure Python 3 is installed by running ```python3 --version```
 3. Install iverilog ```pip3 install iverilog```
-4. 
+4. Install yosys & gtkwave for testing & verification
 
 #### How to compile
-.
-.
-.
+1. cd into the repository.
+2. cd into PyVerilog and run ```pip3 setup.py```
+3. run ```python3 main.py``` followed by the path of the synthesized module from yosys.
 
 #### Dependancies
 Libraries used:
