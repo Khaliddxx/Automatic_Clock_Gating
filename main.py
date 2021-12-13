@@ -97,7 +97,7 @@ if __name__ == "__main__":
 			newRTL.append(itemDeclaration)
 		else:
 			mux = itemDeclaration.instances[0]
-			if ("mux" not in mux.module) and ("a21" not in mux.module):
+			if ("mux" not in mux.module) and ("a2" not in mux.module) and ("a3" not in mux.module) and ("a4" not in mux.module):
 				newRTL.append(itemDeclaration)
 
 	list = []
