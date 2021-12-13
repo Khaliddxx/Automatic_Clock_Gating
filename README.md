@@ -29,9 +29,9 @@ Libraries used:
 
 
 #### Code Structure
-.
-.
-.
+. The code looks at multiplexers and aoi components in the netlist and looks at the number of enables
+and accordingly replaces them with clock gating cells depending on number of enables
 
 #### Problems
+Code compatible only with skywater technology
 
