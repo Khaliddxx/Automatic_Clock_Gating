@@ -213,7 +213,7 @@ module test1
   (
     .GCLK(_clockgate_output_),
     .GATE(s),
-    .CLK(CLK)
+    .CLK(clk)
   );
 
 

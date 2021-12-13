@@ -85,7 +85,7 @@ if __name__ == "__main__":
 	enables = list(set(en))
 #	print(enables)
 	for j in range(len(enables)):
-		clkGateArgs.append([vast.PortArg("GCLK", vast.Identifier("_clockgate_output_")), vast.PortArg("GATE", vast.Identifier(str(en[j]))), vast.PortArg("CLK", vast.Identifier("CLK"))])
+		clkGateArgs.append([vast.PortArg("GCLK", vast.Identifier("_clockgate_output_")), vast.PortArg("GATE", vast.Identifier(str(en[j]))), vast.PortArg("CLK", vast.Identifier("clk"))])
 	
     
 	clockgate_output_gclk = vast.Wire('_clockgate_output_')
